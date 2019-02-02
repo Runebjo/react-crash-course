@@ -7,9 +7,15 @@ export class AddTodo extends Component {
 
     onChange = (e) => this.setState({title: e.target.value});
 
+    onSubmit = (e) => {
+      e.preventDefault();
+      this.props.onSubmit(this.state.title);
+      this.setState({ title: '' });
+    }
+
   render() {
     return (
-      <form style={{ display: 'flex' }}>
+      <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
         <input 
             type="text" 
             name="title" 
